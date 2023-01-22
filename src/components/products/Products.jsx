@@ -1,3 +1,4 @@
+import "./productStyle.css"
 import ProductsSkeleton from "./Skeleton"
 import { useEffect } from "react"
 import axios from "axios"
@@ -12,27 +13,30 @@ function Products(){
     useEffect(() => {
         axios.get(`${allToysUrl + false}`)
         .then(data => {
-            setTimeout(() => {
-                setProducts(data.data)
+            setProducts(data.data)
                 setIsLoading(false)
-            }, 1000)
-           
         })
     }, [])
 
     return(
         <div className="productsContainer">
-            {isLoading ? [new Array(6).map((_, idx) => <ProductsSkeleton key={idx}/>)]
-            : products.map((item, idx) => {
+            { isLoading ? Array.apply(null, new Array(12)).map((_, idx) => {return  <ProductsSkeleton key={idx}/>})
+                :  
+            products.map((item, idx) => {
                 return(
-                <div className="product" key={idx}>
-                    <p>{item.title}</p>
-                    <p>{item.price}</p>
-                </div>
-                )
+                            <div className="product" key={idx}>
+                                <div className="productWrap">
+                                    <img className="productImage" src="/images/Mimizaika.jpg" alt="" />
+                                </div>
+                                <div className="productInfo">
+                                    <p className="productTitle">{item.title}</p>
+                                    <p className="productPrice">{item.price} ₽</p>
+                                </div>
+                            </div>
+                        )
             })}
-        </div>
-    )
+        </div>  
+        )
 }
 
 export default Products

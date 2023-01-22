@@ -3,6 +3,7 @@ import ContentLoader from "react-content-loader"
 
 const ProductsSkeleton = () => (
   <ContentLoader 
+    className="product"
     speed={2}
     width={282}
     height={408}
