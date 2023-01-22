@@ -120,7 +120,15 @@
     cursor: pointer;
 }
 
+/* Пароли не совпадают */
 
+.rPsw{
+     color: rgb(170, 40, 40);
+     opacity: 0.8;
+     font-size: 14px;
+     position: absolute;
+     top: 62%;
+}
 
 @keyframes appear {
     from {

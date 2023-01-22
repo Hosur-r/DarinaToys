@@ -27,3 +27,16 @@
 .mainList{
     margin-left: 300px;
 }
+
+/* Корзина */
+
+.headerBusket{
+    display: flex;
+    font-size: 12px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.busketCounter{
+    margin-top: 25px;
+}
