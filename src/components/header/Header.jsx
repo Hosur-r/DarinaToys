@@ -1,7 +1,7 @@
 import "./headerStyle.css"
 import { useState } from "react";
 import Modal from "../modalWin/ModalWin";
-import {Register, Authorization} from "../entrances/requests/Requests"
+// import {Register, Authorization} from "../entrances/requests/Requests"
 import {regUrl, authUrl} from "../../UrlsComponent"
 
 function Header(){
@@ -14,40 +14,40 @@ function Header(){
     const [rpsw, setRpsw] = useState("")
     let count = 0
 
-    let regContent = 
-        <form className="modalFormReg">
-            <input placeholder="Введите логин" className="modalField" onChange={(e) => {setLogin(e.target.value)}} value={login} type="text" autoComplete="on"/>
-            <input placeholder="Введите e-mail" className="modalField" onChange={(e) => {setEmail(e.target.value)}} value={email} type="email" autoComplete="on"/>
-            <input placeholder="Введите пароль" className="modalField" onChange={(e) => {setPsw(e.target.value)}} value={psw} type="password" autoComplete="on"/>
-            <input placeholder="Повторите пароль" className="modalField" onChange={(e) => {setRpsw(e.target.value)}} value={rpsw} type="password" autoComplete="on"/> 
-            <p className="rPsw">{psw === rpsw ? "" : "Пароли не совпадают"}</p>
-            <button type="submit" className="modalBtn" onClick={(e) => handlerSubmit(e)}>Войти</button>
-        </form>
+    // let regContent = 
+    //     <form className="modalFormReg">
+    //         <input placeholder="Введите логин" className="modalField" onChange={(e) => {setLogin(e.target.value)}} value={login} type="text" autoComplete="on"/>
+    //         <input placeholder="Введите e-mail" className="modalField" onChange={(e) => {setEmail(e.target.value)}} value={email} type="email" autoComplete="on"/>
+    //         <input placeholder="Введите пароль" className="modalField" onChange={(e) => {setPsw(e.target.value)}} value={psw} type="password" autoComplete="on"/>
+    //         <input placeholder="Повторите пароль" className="modalField" onChange={(e) => {setRpsw(e.target.value)}} value={rpsw} type="password" autoComplete="on"/> 
+    //         <p className="rPsw">{psw === rpsw ? "" : "Пароли не совпадают"}</p>
+    //         <button type="submit" className="modalBtn" onClick={(e) => handlerSubmit(e)}>Войти</button>
+    //     </form>
 
 
-    let authContent = 
-        <form className="modalFormAuth">
-            <input placeholder="Введите логин" className="modalField" onChange={(e) => {setLogin(e.target.value)}} value={login} type="text" autoComplete="on"/>
-            <input placeholder="Введите пароль" className="modalField" onChange={(e) => {setPsw(e.target.value)}} value={psw} type="password" autoComplete="on"/>
-            <button type="submit" className="modalBtn" onClick={(e) => handlerSubmit(e)}>Войти</button>
-        </form>
+    // let authContent = 
+    //     <form className="modalFormAuth">
+    //         <input placeholder="Введите логин" className="modalField" onChange={(e) => {setLogin(e.target.value)}} value={login} type="text" autoComplete="on"/>
+    //         <input placeholder="Введите пароль" className="modalField" onChange={(e) => {setPsw(e.target.value)}} value={psw} type="password" autoComplete="on"/>
+    //         <button type="submit" className="modalBtn" onClick={(e) => handlerSubmit(e)}>Войти</button>
+    //     </form>
 
-    let regFooter = 
-        <p className="noAccount">
-            Уже есть аккаунт? <button className="noAccountBtn" onClick={() => {setAuth(true); setModal(true)}}>Войти</button>
-        </p>
+    // let regFooter = 
+    //     <p className="noAccount">
+    //         Уже есть аккаунт? <button className="noAccountBtn" onClick={() => {setAuth(true); setModal(true)}}>Войти</button>
+    //     </p>
 
-    let authFooter = 
-        <p className="noAccount">
-            Нет аккаунта? <button className="noAccountBtn"  onClick={() => {setAuth(false); setModal(true)}}>Зарегистрироваться</button>
-        </p>
+    // let authFooter = 
+    //     <p className="noAccount">
+    //         Нет аккаунта? <button className="noAccountBtn"  onClick={() => {setAuth(false); setModal(true)}}>Зарегистрироваться</button>
+    //     </p>
 
 
-        const handlerSubmit = async(e) => {
-            e.preventDefault()
-            isAuth ?  await Authorization(login, psw, authUrl) :  await Register(login, email, psw, regUrl)
-            setModal(false)
-        }
+        // const handlerSubmit = async(e) => {
+        //     e.preventDefault()
+        //     isAuth ?  await Authorization(login, psw, authUrl) :  await Register(login, email, psw, regUrl)
+        //     setModal(false)
+        // }
 
     return(
         <div className="header">
@@ -87,13 +87,13 @@ function Header(){
                 </div>
 
 
-                <Modal
+                {/* <Modal
                     isVisible={isModal}
                     title={ isAuth ? "Авторизация" : "Регистрация"}
                     content={isAuth ? authContent : regContent}
                     footer={isAuth ? authFooter : regFooter}
                     onClose={() => setModal(false)}
-                />
+                /> */}
 
         </div>
 
