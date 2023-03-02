@@ -8,8 +8,8 @@
 
 .product{
     width: 282px;
-    height: 408px;
-    background-color: #D9D9D9;
+    height: 370px;
+    background-color: #f368e73b;
     margin-bottom: 24px;
     border-radius: 10px;
 }
@@ -18,15 +18,19 @@
 
 .productImage{
     width: 282px;
-    height: 282px;
+    height: 260px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    cursor: pointer;
 }
 
 /* Цена, тайтл, звёзды ,стрелочка */
 
 .productInfo{
-    padding: 0 20px 0 20px;
+    padding: 0 10px 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .productTitle{
@@ -40,4 +44,16 @@
     line-height: 19px;
     letter-spacing: 0.2em;
     margin: 10px 0 10px 0;
+}
+
+/* Кнопка корзины */
+
+.busketBtn{
+    margin: 0 10px 0 10px;
+    border: none;
+    padding: 6px;
+    background-color: rgba(243, 126, 184, 0.486);
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
 }
