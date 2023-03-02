@@ -2,7 +2,7 @@ import "./productStyle.css"
 import ProductsSkeleton from "./Skeleton"
 import { useEffect } from "react"
 import axios from "axios"
-import {allToysUrl} from "../../UrlsComponent"
+import {productsUrl} from "../../UrlsComponent"
 import { useState } from "react"
 
 function Products(){
@@ -11,7 +11,7 @@ function Products(){
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        axios.get(`${allToysUrl + false}`)
+        axios.get(`${productsUrl}`)
         .then(data => {
             setProducts(data.data)
                 setIsLoading(false)
