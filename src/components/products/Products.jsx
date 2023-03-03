@@ -4,7 +4,8 @@ import { useEffect } from "react"
 import axios from "axios"
 import {productsUrl, productUrl} from "../../UrlsComponent"
 import { useState } from "react"
-import ProductModal from "../../ProductModalWin/ModalWin"
+import ProductModal from "../productModalWin/ModalWin"
+import { productReq } from "./requests"
 
 function Products(){
 
@@ -16,7 +17,7 @@ function Products(){
         <p>{product.title}</p>
         <p>{product.price}</p>
         <p>{product.description}</p>
-        <p>{product.materials}</p>
+        <p>{product.materials?.map((item) => item.title)}</p>
     </div>
 
     useEffect(() => {
@@ -28,13 +29,10 @@ function Products(){
     }, [])
 
 
-    const modalProduct = async(url) => {
-            // await axios.get(`${url + item.pk}`)         // pk НЕ РОБИТ
-            // .then(data => {
-            //     setProduct(data.data)
-            // })
-
-            // setModal(true)
+    const modalProduct = async(key) => {
+        await productReq(productUrl, key, setProduct)
+        setModal(true)
+        console.log(product)
     }
 
 
@@ -45,7 +43,7 @@ function Products(){
             products.map((item, idx) => {
                 return(
                             <div className="product" key={idx}>
-                                <div className="productWrap" onClick={() => modalProduct(productUrl)}>
+                                <div className="productWrap" onClick={() => modalProduct(item.pk)}>
                                     <img className="productImage" src="/images/Mimizaika.jpg" alt="" />
                                 </div>
                                 <div className="productInfo">
