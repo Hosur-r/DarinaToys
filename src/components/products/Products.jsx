@@ -16,24 +16,25 @@ function Products(){
 
 
     let content = 
+        <div className="">
+            <div className="productModalContent">
+                <img className="productModalPhoto" src={product.photos?.map((item) => item.photo)} alt="" width={100} height={100} /> {/* Картинка игрушки */}
+                <p className="productModalTitle">{product.title}</p>    
+                <div className="productModalDesc" dangerouslySetInnerHTML={createMarkup(product.description)} />   {/* Описание */}
+                <p className="productModalMaterials">{product.materials?.map((item) => item.title)}</p>               {/* Материалы игрушки */}
+                <p className="productModalPrice">{product.price} ₽</p>     {/* Цена */}
+            </div>
 
-    <div className="productModalContent">
-        <img className="productModalPhoto" src={product.photos?.map((item) => item.photo)} alt="" width={100} height={100} /> {/* Картинка игрушки */}
-          <p className="productModalTitle">{product.title}</p>    
-        <div className="productModalDesc" dangerouslySetInnerHTML={createMarkup(product.description)} />   {/* Описание */}
-          <p className="productModalMaterials">{product.materials?.map((item) => item.title)}</p>               {/* Материалы игрушки */}
-          <p className="productModalPrice">{product.price} ₽</p>     {/* Цена */}
+            <div className="productModalComments">{product.comments?.map((item,idx) =>{         {/* Комментарии к игрушке */}
+                return (
+                        <div className="" key={idx}>
+                            <p>{item.comment}</p>
+                        </div>         
+                    )
+                })}
+            </div> 
+        </div>
 
-          <div className="productModalMaterials">{product.comments?.map((item,idx) =>{
-     return (
-                <div className="" key={idx}>
-                        <p>{item.comment}</p>
-                </div>         
-            )
-            })}
-          </div>      
-
-    </div>
 
     useEffect(() => {
         axios.get(productsUrl)
