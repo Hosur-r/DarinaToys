@@ -13,11 +13,26 @@ function Products(){
     const [product, setProduct] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [isModal, setModal] = useState(false);
-    let content = <div className="productModalContent">
-        <p>{product.title}</p>
-        <p>{product.price}</p>
-        <p>{product.description}</p>
-        <p>{product.materials?.map((item) => item.title)}</p>
+
+
+    let content = 
+
+    <div className="productModalContent">
+        <img className="productModalPhoto" src={product.photos?.map((item) => item.photo)} alt="" width={100} height={100} /> {/* Картинка игрушки */}
+          <p className="productModalTitle">{product.title}</p>    
+        <div className="productModalDesc" dangerouslySetInnerHTML={createMarkup(product.description)} />   {/* Описание */}
+          <p className="productModalMaterials">{product.materials?.map((item) => item.title)}</p>               {/* Материалы игрушки */}
+          <p className="productModalPrice">{product.price} ₽</p>     {/* Цена */}
+
+          <div className="productModalMaterials">{product.comments?.map((item,idx) =>{
+     return (
+                <div className="" key={idx}>
+                        <p>{item.comment}</p>
+                </div>         
+            )
+            })}
+          </div>      
+
     </div>
 
     useEffect(() => {
@@ -28,11 +43,13 @@ function Products(){
         })
     }, [])
 
-
+        function createMarkup(text) {
+        return {__html: text}
+        }
+        
     const modalProduct = async(key) => {
         await productReq(productUrl, key, setProduct)
         setModal(true)
-        console.log(product)
     }
 
 
@@ -44,7 +61,7 @@ function Products(){
                 return(
                             <div className="product" key={idx}>
                                 <div className="productWrap" onClick={() => modalProduct(item.pk)}>
-                                    <img className="productImage" src="/images/Mimizaika.jpg" alt="" />
+                                    <img className="productImage" src={item.photos[0].photo} alt="" />
                                 </div>
                                 <div className="productInfo">
                                     <p className="productTitle">{item.title}</p>
@@ -57,9 +74,9 @@ function Products(){
 
                 <ProductModal
                     isVisible={isModal}
-                    title={"title"}
+                    title={<></>}
                     content={content}
-                    footer={"footer"}
+                    footer={<></>}
                     onClose={() => setModal(false)}
                 />
 

@@ -57,3 +57,43 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+
+
+/* CSS стили для модалки продукта */
+
+.productModalTitle{
+    margin-right: 275px;
+    margin-left: 721px;
+    font-size: 36pt;
+    margin-top: -412px;
+    width: max-content;
+}
+
+.productModalPhoto{
+    margin-left: 127px;
+    width: 400px;
+    height: 400px;
+    margin-top: 22px;
+}
+
+.productModalDesc{
+    margin-left: 600px;
+    font-size: 19pt;
+    margin-top: -38px;
+    margin-right: 134px;
+}
+
+.productModalMaterials{
+    margin-left: 600px;
+    font-size: 14pt;
+    margin-right: 108px;
+}
+
+.productModalPrice{
+    margin-left: 959px;
+    margin-right: 74px;
+    font-size: 20pt;
+    margin-top: 100px;
+}
+
