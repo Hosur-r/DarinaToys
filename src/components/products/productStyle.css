@@ -57,3 +57,113 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+/* Модалка */
+
+.productModalContent{
+    display: flex;
+    align-items:flex-start;
+    padding: 0 3% 0 3%;
+    font-size: 18px;
+    position: relative
+}
+
+/* Основная информация модального окна с товаром */
+
+.productDescWrap{
+    padding: 0 2% 0 2%;
+}
+
+.productModalTitle{
+    text-align: center;
+    font-size: 24px;
+    font-weight: lighter;
+    margin: 0;
+}
+
+/* Контейнер с ценой и кнопкой */
+
+.modalBucketWrap{
+    display: flex;
+    align-items: center;
+    position:absolute;
+    bottom: 0;
+    width: 500px;
+}
+
+.productModalBtn{
+    margin-left: 10%;
+    padding: 10px 15px 10px 15px;
+    background-color: rgba(243, 126, 184, 0.486);
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+.productModalPrice{
+    text-align: right;
+    padding-left: 40%;
+}
+
+/* Общие стили для текста в модалке */
+
+.productModalContent p{
+    margin: 8px 0 8px 0 ;
+}
+
+
+/* Картинка-слайдер модалки */
+
+.productImageWrap{
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 15%;
+    box-shadow: 1px 1px 4px 3px rgba(0, 0, 0, 0.349);
+}
+
+.productModalPhoto{
+    border-radius: 15%;
+    width: 100%;
+    position: relative;
+}
+
+.productPhotoNav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position:absolute;
+    width: 300px;
+}
+
+.navNext, .navPrev{
+    position: relative;
+    font-size: 24px;
+    color: rgb(73, 44, 71);
+    cursor: pointer;
+    padding: 100% 10px 100% 10px;
+    border-radius: 10px;
+}
+
+.navNext:hover{
+    background-color: rgba(5, 5, 5, 0.082);
+    transition: 0.3s;
+}
+
+.navPrev:hover{
+    background-color: rgba(5, 5, 5, 0.082);
+    transition: 0.3s;
+}
+
+.productModalPhotoWrap{
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: all ease-in-out 0.3s;
+    width: 100%;
+}
