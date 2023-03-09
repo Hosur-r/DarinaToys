@@ -14,8 +14,10 @@ function Products(){
     const [isLoading, setIsLoading] = useState(true);
     const [isModal, setModal] = useState(false);
     const [purchase, setPurchase] = useState({});
-    let offset = 0;
+    let ImageOffset = 0;
+    let CommOfset = 0;
     let imageCounter = 0;
+    let commCounter = 0;
     let content = 
         <div className="">
             <div className="productModalContent">
@@ -53,7 +55,8 @@ function Products(){
 
             <div className="productModalCommentsWrap">
                 <div className="productModalComments">
-                    {product.comments?.map((item,idx) =>{                                                
+                    {product.comments?.map((item,idx) =>{      
+                        commCounter++                                          
                         return (
                             <div className="productModalComment" key={idx}>
                                 <p>{item.comment}</p>
@@ -63,8 +66,8 @@ function Products(){
                 </div> 
 
                 <div className="productCommentsNav">
-                    <div className="navPrevComment" onClick={() => {}}>&#10094;</div>
-                    <div className="navNextComment" onClick={() => {}}>&#10095;</div>
+                    <div className="navPrevComment" onClick={() => sliderPrevComm()}>&#10094;</div>
+                    <div className="navNextComment" onClick={() => sliderNextComm()}>&#10095;</div>
                 </div>
 
             </div>
@@ -85,18 +88,33 @@ function Products(){
 
     const sliderPrev = () => {
         const slider = document.querySelector('.productModalPhotoWrap')
-        offset += 300
-        if(offset > 0){offset = (imageCounter - 1)* -300}
-                slider.style.left = offset + 'px'
+        ImageOffset += 300
+        if(ImageOffset > 0){ImageOffset = (imageCounter - 1)* -300}
+                slider.style.left = ImageOffset + 'px'
     }
 
     const sliderNext = () => {
         const slider = document.querySelector('.productModalPhotoWrap')
-            offset -= 300
-            if(offset < (imageCounter - 1)* -300){offset = 0}
-                slider.style.left = offset + 'px'
+        ImageOffset -= 300
+            if(ImageOffset < (imageCounter - 1)* -300){ImageOffset = 0}
+                slider.style.left = ImageOffset + 'px'
     }
 
+    
+
+    const sliderPrevComm = () => {
+        const slider = document.querySelector('.productModalComments')
+        CommOfset += 720
+        if(CommOfset > 0){CommOfset = (commCounter - 1)* -720}
+                slider.style.left = CommOfset + 'px'
+    }
+
+    const sliderNextComm = () => {
+        const slider = document.querySelector('.productModalComments')
+        CommOfset -= 720
+            if(CommOfset < (commCounter - 1)* -720){CommOfset = 0}
+                slider.style.left = CommOfset + 'px'
+    }
 
 
 
