@@ -145,11 +145,14 @@ function Products(){
                                 <div className="productWrap" onClick={() => modalProduct(item.id)}>
                                     <img className="productImage" src={item.photos[0].photo ? item.photos[0].photo : ''} alt="" />
                                 </div>
+                                
+                                <p className="productTitle">{item.title}</p>
+                                
                                 <div className="productInfo">
-                                    <p className="productTitle">{item.title}</p>
+                                    <button className="busketBtn" onClick={() => addProduct(item)}>Добавить в корзину</button>
                                     <p className="productPrice">{item.price} ₽</p>
                                 </div>
-                                <button className="busketBtn" onClick={() => addProduct(item)}>Добавить в корзину</button>
+                                
                             </div>
                         )
             })}

@@ -27,23 +27,23 @@
 /* Цена, тайтл, звёзды ,стрелочка */
 
 .productInfo{
-    padding: 0 10px 0 10px;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 .productTitle{
-    font-size: 20px;
+    font-size: 18px;
     line-height: 140%;
-    margin: 10px 0 10px 0;
+    margin: 10px 0 10px 10px;
 }
 
 .productPrice{
-    font-size: 16px;
+    font-size: 14px;
     line-height: 19px;
     letter-spacing: 0.2em;
-    margin: 10px 0 10px 0;
+    margin: 10px 10px 10px 0;
 }
 
 /* Кнопка корзины */
