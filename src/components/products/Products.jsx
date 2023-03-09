@@ -51,14 +51,24 @@ function Products(){
             
             </div>
 
-            <div className="productModalComments">{product.comments?.map((item,idx) =>{                                                
-                return (
-                        <div className="" key={idx}>
-                            <p>{item.comment}</p>
-                        </div>         
-                    )
-                })}
-            </div> 
+            <div className="productModalCommentsWrap">
+                <div className="productModalComments">
+                    {product.comments?.map((item,idx) =>{                                                
+                        return (
+                            <div className="productModalComment" key={idx}>
+                                <p>{item.comment}</p>
+                            </div>         
+                        )
+                    })}
+                </div> 
+
+                <div className="productCommentsNav">
+                    <div className="navPrevComment" onClick={() => {}}>&#10094;</div>
+                    <div className="navNextComment" onClick={() => {}}>&#10095;</div>
+                </div>
+
+            </div>
+           
         </div>
 
     useEffect(() => {
@@ -76,7 +86,7 @@ function Products(){
     const sliderPrev = () => {
         const slider = document.querySelector('.productModalPhotoWrap')
         offset += 300
-        if(offset > 0){offset = -300}
+        if(offset > 0){offset = (imageCounter - 1)* -300}
                 slider.style.left = offset + 'px'
     }
 

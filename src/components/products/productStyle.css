@@ -81,6 +81,10 @@
     margin: 0;
 }
 
+.productModalDesc{
+    max-width: 500px;
+}
+
 /* Контейнер с ценой и кнопкой */
 
 .modalBucketWrap{
@@ -166,4 +170,63 @@
     position: relative;
     transition: all ease-in-out 0.3s;
     width: 100%;
+    left: 0;
+}
+
+
+/* Комментарии к товару */
+
+.productModalCommentsWrap{
+    width: 100%;
+    max-width: 80%;
+    height: 250px;
+    overflow: hidden;
+    display: flex;
+    /* align-items: center; */
+    position: relative;
+    border: 1px solid black;
+    margin: 5% 9%;
+}
+
+.productModalComments{
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: all ease-in-out 0.3s;
+    width: 100%;
+    left: 0;
+}
+
+.productModalComment{
+    min-width: 720px;
+    max-width: 720px;
+    position: relative;
+}
+
+.productCommentsNav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    width: 720px;
+    height: 100%;
+}
+
+.navPrevComment, .navNextComment{
+    position: relative;
+    font-size: 24px;
+    color: rgb(73, 44, 71);
+    cursor: pointer;
+    padding: 100% 10px 100% 10px;   
+    border-radius: 10px;
+}
+
+.navNextComment:hover{
+    background-color: rgba(5, 5, 5, 0.082);
+    transition: 0.3s;
+}
+
+.navPrevComment:hover{
+    background-color: rgba(5, 5, 5, 0.082);
+    transition: 0.3s;
 }
