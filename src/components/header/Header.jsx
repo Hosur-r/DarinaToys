@@ -3,6 +3,7 @@ import { useState } from "react";
 import Modal from "../modalWin/ModalWin";
 import {Register, Authorization} from "../entrances/requests/Requests"
 import {regUrl, authUrl} from "../../UrlsComponent"
+import { useNavigate  } from "react-router-dom";
 
 function Header(){
 
@@ -12,7 +13,7 @@ function Header(){
     const [email, setEmail] = useState("")
     const [psw, setPsw] = useState("")
     const [rpsw, setRpsw] = useState("")
-    let count = 0
+    const navigate = useNavigate()
 
     let regContent = 
         <form className="modalFormReg">
@@ -64,7 +65,7 @@ function Header(){
 
             <div className="mainList">
                 <ul className="listContent">
-                    <li className="listItem">Главная</li>
+                    <li className="listItem" onClick={() => navigate("/")}>Главная</li>
                     <li className="listItem">Товары</li>
                     <li className="listItem">О нас</li>
                 </ul>
@@ -77,11 +78,11 @@ function Header(){
                             <li className="listItem"  onClick={() => {setAuth(false); setModal(true)}}>Регистрация</li>
                         </ul>
                                 :
-                        <div className="headerBusket">
+                        <div className="headerBusket" onClick={() => navigate("basket")}>
                             <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2 20C1.45 20 0.979333 19.8043 0.588 19.413C0.196 19.021 0 18.55 0 18V6C0 5.45 0.196 4.97933 0.588 4.588C0.979333 4.196 1.45 4 2 4H4C4 2.9 4.39167 1.95833 5.175 1.175C5.95833 0.391667 6.9 0 8 0C9.1 0 10.0417 0.391667 10.825 1.175C11.6083 1.95833 12 2.9 12 4H14C14.55 4 15.021 4.196 15.413 4.588C15.8043 4.97933 16 5.45 16 6V18C16 18.55 15.8043 19.021 15.413 19.413C15.021 19.8043 14.55 20 14 20H2ZM2 18H14V6H12V8C12 8.28333 11.9043 8.52067 11.713 8.712C11.521 8.904 11.2833 9 11 9C10.7167 9 10.4793 8.904 10.288 8.712C10.096 8.52067 10 8.28333 10 8V6H6V8C6 8.28333 5.90433 8.52067 5.713 8.712C5.521 8.904 5.28333 9 5 9C4.71667 9 4.47933 8.904 4.288 8.712C4.096 8.52067 4 8.28333 4 8V6H2V18ZM6 4H10C10 3.45 9.80433 2.97933 9.413 2.588C9.021 2.196 8.55 2 8 2C7.45 2 6.97933 2.196 6.588 2.588C6.196 2.97933 6 3.45 6 4Z" fill="#1C1B1F"/>
                             </svg>
-                            <p className="busketCounter">({count})</p>
+                            <p className="busketCounter">({localStorage.getItem("productsCounter")})</p>
                         </div>
                     }
                 </div>

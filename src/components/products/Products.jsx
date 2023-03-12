@@ -13,11 +13,12 @@ function Products(){
     const [product, setProduct] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isModal, setModal] = useState(false);
-    const [purchase, setPurchase] = useState({});
     let ImageOffset = 0;
     let CommOfset = 0;
     let imageCounter = 0;
     let commCounter = 0;
+    let productsCounter = 1;
+    let arr = [];
     let content = 
         <div className="">
             <div className="productModalContent">
@@ -46,7 +47,24 @@ function Products(){
                         <p className="productModalMaterials"> <b>Материалы:</b> {product.materials?.map((item) => item.title)}</p>             
                             
                         <div className="modalBucketWrap">
-                            <button className="productModalBtn">Добавить в корзину</button>
+                            <button className="productModalBtn" onClick={() => {
+                                        const purchaseTest = JSON.parse(localStorage.getItem("purchase"))
+                                        const productsCounterTest = localStorage.getItem("productsCounter")
+
+                                            if(purchaseTest && productsCounterTest !== null){
+                                                arr = purchaseTest
+                                                arr.push(product)
+                                                localStorage.setItem("purchase", JSON.stringify(arr))
+                                                    productsCounter = productsCounterTest
+                                                    productsCounter++
+                                                    localStorage.setItem("productsCounter", productsCounter++)
+                                            }
+                                            else{
+                                                arr.push(product)
+                                                localStorage.setItem("purchase", JSON.stringify(arr))
+                                                localStorage.setItem("productsCounter", productsCounter++)
+                                            }
+                            }}>Добавить в корзину</button>
                             <p className="productModalPrice">{product.price} ₽</p>                                                                  
                         </div>
                     </div>
@@ -128,12 +146,6 @@ function Products(){
         setModal(true)
     }
 
-    const addProduct = (product) => {
-        setPurchase(purchase, product)
-    }
-
-
-
 
     return(
         <div className="productsContainer">
@@ -149,7 +161,26 @@ function Products(){
                                 <p className="productTitle">{item.title}</p>
                                 
                                 <div className="productInfo">
-                                    <button className="busketBtn" onClick={() => addProduct(item)}>Добавить в корзину</button>
+                                    <button className="busketBtn" onClick={() => {
+
+                                        const purchaseTest = JSON.parse(localStorage.getItem("purchase"))
+                                        const productsCounterTest = localStorage.getItem("productsCounter")
+
+                                            if(purchaseTest && productsCounterTest !== null){
+                                                arr = purchaseTest
+                                                arr.push(item)
+                                                localStorage.setItem("purchase", JSON.stringify(arr))
+                                                    productsCounter = productsCounterTest
+                                                    productsCounter++
+                                                    localStorage.setItem("productsCounter", productsCounter++)
+                                            }
+                                            else{
+                                                arr.push(item)
+                                                localStorage.setItem("purchase", JSON.stringify(arr))
+                                                localStorage.setItem("productsCounter", productsCounter++)
+                                            }
+                                    }
+                                        }>Добавить в корзину</button>
                                     <p className="productPrice">{item.price} ₽</p>
                                 </div>
                                 
