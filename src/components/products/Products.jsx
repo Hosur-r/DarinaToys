@@ -44,7 +44,7 @@ function Products(){
                     <div className="productDescWrap">
                         <p className="productModalTitle">{product.title}</p>    
                         <div className="productModalDesc" dangerouslySetInnerHTML={createMarkup(product.description)} />                       
-                        <p className="productModalMaterials"> <b>Материалы:</b> {product.materials?.map((item) => item.title)}</p>             
+                        <p className="productModalMaterials">Состав: {product.materials?.map((item) => item.title)}</p>             
                             
                         <div className="modalBucketWrap">
                             <button className="productModalBtn" onClick={() => {

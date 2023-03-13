@@ -84,8 +84,11 @@
 
 .productModalTitle{
     text-align: center;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 500;
     font-size: 24px;
-    font-weight: lighter;
+    line-height: 29px;
     margin: 0;
 }
 
@@ -106,16 +109,28 @@
 .productModalBtn{
     margin-left: 10%;
     padding: 10px 15px 10px 15px;
-    background-color: rgba(243, 126, 184, 0.486);
+    background: #B67B8E;
+    border-radius: 10px;
     font-size: 16px;
-    border-radius: 5px;
     cursor: pointer;
     border: none;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 14px;
+    color: white;
+    padding: 20px;
+    transition: 0.3s;
+}
+
+.productModalBtn:hover{
+    background: #dba4b6;
 }
 
 .productModalPrice{
     text-align: right;
-    padding-left: 40%;
+    padding-left: 35%;
 }
 
 /* Общие стили для текста в модалке */
@@ -190,10 +205,11 @@
     height: 250px;
     overflow: hidden;
     display: flex;
-    /* align-items: center; */
     position: relative;
-    border: 1px solid black;
     margin: 5% 9%;
+    background: #FFFFFF;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), -2px -2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
 }
 
 .productModalComments{
@@ -206,8 +222,8 @@
 }
 
 .productModalComment{
-    min-width: 720px;
-    max-width: 720px;
+    min-width: 800px;
+    max-width: 800px;
     position: relative;
 }
 
@@ -216,7 +232,7 @@
     align-items: center;
     justify-content: space-between;
     position: absolute;
-    width: 720px;
+    width: 800px;
     height: 100%;
 }
 
