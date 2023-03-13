@@ -12,6 +12,9 @@
 
 .listContent{
     display: flex;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
     font-size: 14px;
     line-height: 140%;
     letter-spacing: 0.1em;

@@ -153,37 +153,16 @@ function Products(){
                 :  
             products.map((item, idx) => {
                 return(
-                            <div className="product" key={idx}>
-                                <div className="productWrap" onClick={() => modalProduct(item.id)}>
+                            <div className="product" key={idx} onClick={() => modalProduct(item.id)}>
+                                <div className="productWrap">
                                     <img className="productImage" src={item.photos[0].photo ? item.photos[0].photo : ''} alt="" />
                                 </div>
                                 
                                 <p className="productTitle">{item.title}</p>
-                                
-                                <div className="productInfo">
-                                    <button className="busketBtn" onClick={() => {
-
-                                        const purchaseTest = JSON.parse(localStorage.getItem("purchase"))
-                                        const productsCounterTest = localStorage.getItem("productsCounter")
-
-                                            if(purchaseTest && productsCounterTest !== null){
-                                                arr = purchaseTest
-                                                arr.push(item)
-                                                localStorage.setItem("purchase", JSON.stringify(arr))
-                                                    productsCounter = productsCounterTest
-                                                    productsCounter++
-                                                    localStorage.setItem("productsCounter", productsCounter++)
-                                            }
-                                            else{
-                                                arr.push(item)
-                                                localStorage.setItem("purchase", JSON.stringify(arr))
-                                                localStorage.setItem("productsCounter", productsCounter++)
-                                            }
-                                    }
-                                        }>Добавить в корзину</button>
-                                    <p className="productPrice">{item.price} ₽</p>
-                                </div>
-                                
+                                <p className="productPrice">{item.price} ₽</p>
+                                <svg className="productArrow" width="71" height="6" viewBox="0 0 71 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M70.2475 3.24749C70.3842 3.1108 70.3842 2.8892 70.2475 2.75251L68.0201 0.525126C67.8834 0.388443 67.6618 0.388443 67.5251 0.525126C67.3884 0.66181 67.3884 0.883418 67.5251 1.0201L69.505 3L67.5251 4.9799C67.3884 5.11658 67.3884 5.33819 67.5251 5.47487C67.6618 5.61156 67.8834 5.61156 68.0201 5.47487L70.2475 3.24749ZM0 3.35H70V2.65H0V3.35Z" fill="black"/>
+                                </svg>
                             </div>
                         )
             })}

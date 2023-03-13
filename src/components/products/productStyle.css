@@ -9,8 +9,11 @@
 .product{
     width: 282px;
     height: 370px;
-    background-color: #f368e73b;
     margin-bottom: 24px;
+    cursor: pointer;
+    position: relative;
+    background: #FFFFFF;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), -2px -2px 5px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 }
 
@@ -21,29 +24,34 @@
     height: 260px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    cursor: pointer;
 }
 
 /* Цена, тайтл, звёзды ,стрелочка */
 
-.productInfo{
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
 .productTitle{
-    font-size: 18px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
     line-height: 140%;
+    color: #000000;
+
     margin: 10px 0 10px 10px;
 }
 
 .productPrice{
-    font-size: 14px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
     line-height: 19px;
     letter-spacing: 0.2em;
-    margin: 10px 10px 10px 0;
+    margin: 10px 0 10px 10px;
+}
+
+.productArrow{
+    position: absolute;
+    right: 10%;
 }
 
 /* Кнопка корзины */
