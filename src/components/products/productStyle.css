@@ -158,6 +158,8 @@
     border-radius: 15%;
     width: 100%;
     position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .productPhotoNav{
@@ -253,4 +255,19 @@
 .navPrevComment:hover{
     background-color: rgba(5, 5, 5, 0.082);
     transition: 0.3s;
+}
+
+.productCommentsFalse{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 800px;
+    max-width: 800px;
+    
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 140%;
 }

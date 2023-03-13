@@ -33,7 +33,7 @@ function Products(){
                                         )
                                     })} 
                                 </div>
-                    
+                                    
                                 <div className="productPhotoNav">
                                     <div className="navPrev" onClick={() => sliderPrev()}>&#10094;</div>
                                     <div className="navNext" onClick={() => sliderNext()}>&#10095;</div>
@@ -82,11 +82,14 @@ function Products(){
                         )
                     })}
                 </div> 
-
-                <div className="productCommentsNav">
-                    <div className="navPrevComment" onClick={() => sliderPrevComm()}>&#10094;</div>
-                    <div className="navNextComment" onClick={() => sliderNextComm()}>&#10095;</div>
-                </div>
+                        {product.comments.length > 1 ? 
+                         <div className="productCommentsNav">
+                            <div className="navPrevComment" onClick={() => sliderPrevComm()}>&#10094;</div>
+                            <div className="navNextComment" onClick={() => sliderNextComm()}>&#10095;</div>
+                        </div>
+                    : <p className="productCommentsFalse">Комментариев нет</p>
+                    }
+               
 
             </div>
            
@@ -155,7 +158,7 @@ function Products(){
                 return(
                             <div className="product" key={idx} onClick={() => modalProduct(item.id)}>
                                 <div className="productWrap">
-                                    <img className="productImage" src={item.photos[0].photo ? item.photos[0].photo : ''} alt="" />
+                                    <img className="productImage" src={item.photos[0].photo ? item.photos[0].photo : ''} alt="" width={300} height={300}/>
                                 </div>
                                 
                                 <p className="productTitle">{item.title}</p>
