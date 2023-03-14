@@ -13,6 +13,7 @@ function Products(){
     const [product, setProduct] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isModal, setModal] = useState(false);
+    // const [auth, setAuth] = useState(false)
     let ImageOffset = 0;
     let CommOfset = 0;
     let imageCounter = 0;
@@ -26,7 +27,7 @@ function Products(){
                         <div className="productImageWrap">
                         
                                 <div className="productModalPhotoWrap">
-                                    {product.photos?.map((item, idx) => {
+                                    {product?.photos?.map((item, idx) => {
                                         imageCounter++
                                         return(
                                             <img className="productModalPhoto" key={idx} src={item.photo ? item.photo : ''} alt="" width={300} height={300} /> 
@@ -48,41 +49,49 @@ function Products(){
                             
                         <div className="modalBucketWrap">
                             <button className="productModalBtn" onClick={() => {
-                                        const purchaseTest = JSON.parse(localStorage.getItem("purchase"))
-                                        const productsCounterTest = localStorage.getItem("productsCounter")
+                                if(localStorage.getItem("access")) {
+                                    // setAuth(false)
+                                    const purchaseTest = JSON.parse(localStorage.getItem("purchase"))
+                                    const productsCounterTest = localStorage.getItem("productsCounter")
 
-                                            if(purchaseTest && productsCounterTest !== null){
-                                                arr = purchaseTest
-                                                arr.push(product)
-                                                localStorage.setItem("purchase", JSON.stringify(arr))
-                                                    productsCounter = productsCounterTest
-                                                    productsCounter++
-                                                    localStorage.setItem("productsCounter", productsCounter++)
-                                            }
-                                            else{
-                                                arr.push(product)
-                                                localStorage.setItem("purchase", JSON.stringify(arr))
+                                        if(purchaseTest && productsCounterTest !== null){
+                                            arr = purchaseTest
+                                            arr.push(product)
+                                            localStorage.setItem("purchase", JSON.stringify(arr))
+                                                productsCounter = productsCounterTest
+                                                productsCounter++
                                                 localStorage.setItem("productsCounter", productsCounter++)
-                                            }
+                                        }
+                                        else{
+                                            arr.push(product)
+                                            localStorage.setItem("purchase", JSON.stringify(arr))
+                                            localStorage.setItem("productsCounter", productsCounter++)
+                                        }
+                                        // setAuth(true)   
+                                }       
                             }}>Добавить в корзину</button>
-                            <p className="productModalPrice">{product.price} ₽</p>                                                                  
+                                
+                            <p className="productModalPrice">{product.price} ₽</p>    
+                                                                                          
                         </div>
+                        
                     </div>
-            
+     
             </div>
+                    {/* {auth ? <p className="falseAuth">Войдите в аккаунт</p> : ""}  */}
 
             <div className="productModalCommentsWrap">
                 <div className="productModalComments">
-                    {product.comments?.map((item,idx) =>{      
+                    {product.comments?.map((item, idx) =>{      
                         commCounter++                                          
                         return (
-                            <div className="productModalComment" key={idx}>
-                                <p>{item.comment}</p>
-                            </div>         
+                            
+                                <p className="productModalComment" key={idx}>{item.comment}</p>
+                                    
                         )
                     })}
                 </div> 
-                        {product.comments.length > 1 ? 
+                        {product.comments?.length > 1 ? 
                          <div className="productCommentsNav">
                             <div className="navPrevComment" onClick={() => sliderPrevComm()}>&#10094;</div>
                             <div className="navNextComment" onClick={() => sliderNextComm()}>&#10095;</div>
@@ -125,15 +134,15 @@ function Products(){
 
     const sliderPrevComm = () => {
         const slider = document.querySelector('.productModalComments')
-        CommOfset += 720
-        if(CommOfset > 0){CommOfset = (commCounter - 1)* -720}
+        CommOfset += 800
+        if(CommOfset > 0){CommOfset = (commCounter - 1)* -800}
                 slider.style.left = CommOfset + 'px'
     }
 
     const sliderNextComm = () => {
         const slider = document.querySelector('.productModalComments')
-        CommOfset -= 720
-            if(CommOfset < (commCounter - 1)* -720){CommOfset = 0}
+        CommOfset -= 800
+            if(CommOfset < (commCounter - 1)* -800){CommOfset = 0}
                 slider.style.left = CommOfset + 'px'
     }
 

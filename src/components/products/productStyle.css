@@ -223,7 +223,16 @@
     left: 0;
 }
 
+.productModalCommentWrap{
+    /* min-width: 800px;
+    max-width: 800px;
+    position: relative; */
+}
+
 .productModalComment{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-width: 800px;
     max-width: 800px;
     position: relative;
