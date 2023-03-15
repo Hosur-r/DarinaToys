@@ -1,0 +1,25 @@
+.basketWrap{
+    margin: 0 auto;
+    width: 1200px;
+}
+
+.basketProduct{
+    width: 100%;
+    height: 260px;
+    margin-bottom: 24px;
+    position: relative;
+    background: #FFFFFF;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), -2px -2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    display: flex;
+}
+
+.productQuantity{
+    font-family: 'lato';
+    font-style: normal;
+    font-weight: 400;
+    color: #000000;
+
+    margin: 10px 0 10px 10px;
+    width: 50px;
+}

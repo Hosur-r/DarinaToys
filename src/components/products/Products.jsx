@@ -50,24 +50,27 @@ function Products(){
                         <div className="modalBucketWrap">
                             <button className="productModalBtn" onClick={() => {
                                 if(localStorage.getItem("access")) {
-                                    // setAuth(false)
                                     const purchaseTest = JSON.parse(localStorage.getItem("purchase"))
                                     const productsCounterTest = localStorage.getItem("productsCounter")
 
                                         if(purchaseTest && productsCounterTest !== null){
-                                            arr = purchaseTest
-                                            arr.push(product)
-                                            localStorage.setItem("purchase", JSON.stringify(arr))
-                                                productsCounter = productsCounterTest
-                                                productsCounter++
-                                                localStorage.setItem("productsCounter", productsCounter++)
+
+                                            if(arr.filter((el) => el.id !== product.id)){       // НЕДОРАБОТАННАЯ СОРТИРОВКА ПОСТУПАЮЩИХ ТОВАРОВ
+                                                arr = purchaseTest
+                                                arr.push(product)
+                                                localStorage.setItem("purchase", JSON.stringify(arr))
+                                                    productsCounter = productsCounterTest
+                                                    productsCounter++
+                                                    localStorage.setItem("productsCounter", productsCounter++)
+                                            }        
                                         }
                                         else{
                                             arr.push(product)
                                             localStorage.setItem("purchase", JSON.stringify(arr))
                                             localStorage.setItem("productsCounter", productsCounter++)
                                         }
-                                        // setAuth(true)   
+                                        
+                                   
                                 }       
                             }}>Добавить в корзину</button>
                                 
