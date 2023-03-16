@@ -4,7 +4,7 @@ import "./basketStyle.css"
 function Basket(){
 
     const [basketProducts, setBasketProducts] = useState([])
-    const [quantity, setQuantity] = useState([])
+    const [quantity, setQuantity] = useState(1)
 
     useEffect(() => {
       const arr = JSON.parse(localStorage.getItem("purchase"))
@@ -18,11 +18,17 @@ function Basket(){
         console.log(basketProducts)
         let arrCount = 0
         const array = []
-        basketProducts.map((el) => array[arrCount++] = {
-            'toy':el.id,
-            'quantity': 1,
-        })
-        console.log(array)
+        const i = JSON.stringify(
+                {
+                    items:[
+                        basketProducts.map((el) => array[arrCount++] = {
+                            'toy':el.id,
+                            'quantity': quantity,
+                        })
+                    ]
+                }
+            )
+        console.log(i)
     }
 
 
@@ -37,7 +43,7 @@ function Basket(){
                         <div className="productDescBasketWrap">
                             <p className="productTitle">{item.title}</p>
                             <p className="productPrice">{item.price}</p>
-                            <input type="number" className="productQuantity" min={1} step={1} value={quantity} onChange={(e) => {setQuantity(e.target.value)}}></input>
+                             <input type="number" className="productQuantity" min={1} step={1} value={quantity} onChange={(e) => {setQuantity(e.target.value)}}></input>
                         </div>
 
                   

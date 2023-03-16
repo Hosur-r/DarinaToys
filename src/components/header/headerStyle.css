@@ -37,9 +37,13 @@
     display: flex;
     font-size: 12px;
     align-items: center;
-    cursor: pointer;
+    
 }
 
 .busketCounter{
     margin-top: 25px;
+}
+
+.headerBusketIcon{
+    cursor:pointer;
 }

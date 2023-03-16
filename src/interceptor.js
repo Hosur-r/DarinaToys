@@ -1,5 +1,5 @@
 import axios from "axios"
-import Refresh from "./request"
+import Refresh from "./tokenUpdate"
 
 const api = axios.create()
 
