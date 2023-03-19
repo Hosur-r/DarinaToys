@@ -10,7 +10,7 @@ function Profile() {
     const handlerSubmit = (comm, mark, url) => {
         api.post(url, 
             JSON.stringify({
-            'comment':comm,
+            'comment': comm,
             'mark': mark,
             'toy': 1
         }))

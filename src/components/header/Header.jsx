@@ -14,6 +14,9 @@ function Header(){
     const [psw, setPsw] = useState("")
     const [rpsw, setRpsw] = useState("")
     const navigate = useNavigate()
+    
+
+    
 
     let regContent = 
         <form className="modalFormReg">
