@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react"
 import "./basketStyle.css"
+import api from "../../interceptor"
+import { purchaseUrl } from "../../UrlsComponent"
+import { useNavigate } from "react-router-dom"
 
 function Basket(){
 
     const [basketProducts, setBasketProducts] = useState([])
-    const [quantity, setQuantity] = useState(1)
+    let quantity = 1;
+    const navigate = useNavigate()
 
     useEffect(() => {
       const arr = JSON.parse(localStorage.getItem("purchase"))
@@ -14,21 +18,33 @@ function Basket(){
     }, [])
 
 
-    const MakePurchaise = () => {
-        console.log(basketProducts)
+    const MakePurchaise = async(url) => {
         let arrCount = 0
         const array = []
-        const i = JSON.stringify(
-                {
-                    items:[
-                        basketProducts.map((el) => array[arrCount++] = {
-                            'toy':el.id,
-                            'quantity': quantity,
+
+        await api.post(url, 
+            {   
+                items:[
+                        basketProducts.map((el) => array[arrCount++] =  {
+                        'toy':el.id,
+                        'quantity': 1,
                         })
                     ]
-                }
-            )
-        console.log(i)
+            })
+
+            if(localStorage.getItem('status') === "ok"){
+                await api.post(url, 
+                    {   
+                        items:[
+                                basketProducts.map((el) => array[arrCount++] =  {
+                                'toy':el.id,
+                                'quantity': 1,
+                                })
+                            ]
+                    })
+                localStorage.removeItem("status")
+            } 
+        navigate('/profile')
     }
 
 
@@ -43,7 +59,11 @@ function Basket(){
                         <div className="productDescBasketWrap">
                             <p className="productTitle">{item.title}</p>
                             <p className="productPrice">{item.price}</p>
-                             <input type="number" className="productQuantity" min={1} step={1} value={quantity} onChange={(e) => {setQuantity(e.target.value)}}></input>
+                            <div className="productQuantity">
+                                <button onClick={() => {quantity+=1}}>+</button>
+                                <button onClick={() => {quantity-=1}}>-</button>
+                                <p>Колличество: {quantity}</p>
+                            </div>
                         </div>
 
                   
@@ -51,7 +71,7 @@ function Basket(){
                 )
             })}
 
-            <button onClick={() => {MakePurchaise()}}>Сделать заказ</button>
+            <button onClick={() => {MakePurchaise(purchaseUrl)}}>Сделать заказ</button>
         </div>
     )
 }
