@@ -3,7 +3,7 @@ import Refresh from "./tokenUpdate"
 
 const api = axios.create()
 
-api.interceptors.request.use(  config => {
+api.interceptors.request.use(config => {
     if(localStorage.getItem('access')){
         config.headers = {
             'Authorization':`Bearer ${localStorage.getItem('access')}`
@@ -18,7 +18,7 @@ api.interceptors.request.use(  config => {
   )
 
 
-  api.interceptors.response.use(  response => {
+  api.interceptors.response.use(response => {
     if(localStorage.getItem('access')){
         response.headers = {
             'Authorization':`Bearer ${localStorage.getItem('access')}`
@@ -29,6 +29,7 @@ api.interceptors.request.use(  config => {
   }, async error => {
         if(error.response.status === 401){
             await Refresh()
+            localStorage.setItem("status", "ok")
         }}
   )
 

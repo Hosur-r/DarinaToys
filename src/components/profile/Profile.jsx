@@ -7,13 +7,23 @@ function Profile() {
     const [comment, setComment] = useState('')
     const [mark, setMark] = useState(5)
 
-    const handlerSubmit = (comm, mark, url) => {
-        api.post(url, 
-            JSON.stringify({
-            'comment': comm,
+    const handlerSubmit = async(comm, mark, url) => {
+        await api.post(url, 
+           {
+            'comment': `${comm}`,
             'mark': mark,
             'toy': 1
-        }))
+        }) 
+        if(localStorage.getItem('status') === "ok"){
+            await api.post(url, 
+                {
+                 'comment': `${comm}`,
+                 'mark': mark,
+                 'toy': 1
+             }) 
+            localStorage.removeItem("status")
+        } 
+         
     }
 
     return (
