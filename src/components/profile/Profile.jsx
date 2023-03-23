@@ -1,30 +1,16 @@
-import { useState } from "react"
-import api from "../../interceptor"
-import { commentsUrl } from "../../UrlsComponent"
+import { useEffect, useState } from "react"
+import { commentsUrl, purchaseUrl } from "../../UrlsComponent"
+import { getPurchase, handlerSubmit } from "./requests"
 
 function Profile() {
 
     const [comment, setComment] = useState('')
     const [mark, setMark] = useState(5)
+    const [purchase, setPurchase] = useState([])
 
-    const handlerSubmit = async(comm, mark, url) => {
-        await api.post(url, 
-           {
-            'comment': `${comm}`,
-            'mark': mark,
-            'toy': 1
-        }) 
-        if(localStorage.getItem('status') === "ok"){
-            await api.post(url, 
-                {
-                 'comment': `${comm}`,
-                 'mark': mark,
-                 'toy': 1
-             }) 
-            localStorage.removeItem("status")
-        } 
-         
-    }
+    useEffect(() => {
+        getPurchase(purchaseUrl,setPurchase)
+    }, [])
 
     return (
         <div className="">
@@ -34,7 +20,16 @@ function Profile() {
                 <label htmlFor="mark">Оценка</label>
                     <input name="mark" type="number" max={5} min={1} value={mark} onChange={(e) => setMark(e.target.value)}/>
                     <button onClick={() => handlerSubmit(comment, mark, commentsUrl)}>SEND</button>
-           
+            {
+                purchase?.map((item, idx) => {
+                    return(
+                        <div className="items" key={idx}>
+                            <p>{item.status}</p>
+                            <p>{item.total_price}</p>
+                        </div>
+                    )
+                })
+            }
 
         </div>
     )

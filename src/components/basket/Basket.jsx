@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react"
 import "./basketStyle.css"
-import api from "../../interceptor"
 import { purchaseUrl } from "../../UrlsComponent"
-import { useNavigate } from "react-router-dom"
+import { MakePurchaise } from "./requests"
 
 function Basket(){
 
     const [basketProducts, setBasketProducts] = useState([])
     let quantity = 1;
-    const navigate = useNavigate()
 
     useEffect(() => {
       const arr = JSON.parse(localStorage.getItem("purchase"))
@@ -17,35 +15,6 @@ function Basket(){
         }
     }, [])
 
-
-    const MakePurchaise = async(url) => {
-        let arrCount = 0
-        const array = []
-
-        await api.post(url, 
-            {   
-                items:[
-                        basketProducts.map((el) => array[arrCount++] =  {
-                        'toy':el.id,
-                        'quantity': 1,
-                        })
-                    ]
-            })
-
-            if(localStorage.getItem('status') === "ok"){
-                await api.post(url, 
-                    {   
-                        items:[
-                                basketProducts.map((el) => array[arrCount++] =  {
-                                'toy':el.id,
-                                'quantity': 1,
-                                })
-                            ]
-                    })
-                localStorage.removeItem("status")
-            } 
-        navigate('/profile')
-    }
 
 
     return(
@@ -70,8 +39,7 @@ function Basket(){
                     </div>
                 )
             })}
-
-            <button onClick={() => {MakePurchaise(purchaseUrl)}}>Сделать заказ</button>
+            <button onClick={() => {MakePurchaise(purchaseUrl, basketProducts)}}>Сделать заказ</button>
         </div>
     )
 }

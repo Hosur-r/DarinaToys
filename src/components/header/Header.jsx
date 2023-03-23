@@ -15,10 +15,7 @@ function Header(){
     const [rpsw, setRpsw] = useState("")
     const navigate = useNavigate()
     
-
-    
-
-    let regContent = 
+const regContent = 
         <form className="modalFormReg">
             <input placeholder="Введите логин" className="modalField" onChange={(e) => {setLogin(e.target.value)}} value={login} type="text" autoComplete="on"/>
             <input placeholder="Введите e-mail" className="modalField" onChange={(e) => {setEmail(e.target.value)}} value={email} type="email" autoComplete="on"/>
@@ -29,19 +26,21 @@ function Header(){
         </form>
 
 
-    let authContent = 
+const authContent = 
         <form className="modalFormAuth">
             <input placeholder="Введите логин" className="modalField" onChange={(e) => {setLogin(e.target.value)}} value={login} type="text" autoComplete="on"/>
             <input placeholder="Введите пароль" className="modalField" onChange={(e) => {setPsw(e.target.value)}} value={psw} type="password" autoComplete="on"/>
             <button type="submit" className="modalBtn" onClick={(e) => handlerSubmit(e)}>Войти</button>
         </form>
 
-    let regFooter = 
+
+const regFooter = 
         <p className="noAccount">
             Уже есть аккаунт? <button className="noAccountBtn" onClick={() => {setAuth(true); setModal(true)}}>Войти</button>
         </p>
 
-    let authFooter = 
+
+const authFooter = 
         <p className="noAccount">
             Нет аккаунта? <button className="noAccountBtn"  onClick={() => {setAuth(false); setModal(true)}}>Зарегистрироваться</button>
         </p>
